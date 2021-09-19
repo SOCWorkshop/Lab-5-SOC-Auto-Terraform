@@ -22,8 +22,8 @@ resource "aws_instance" "elasticsearch" {
   }
 
   provisioner "file" {
-    source      = "./file/elasticsearch.repo"
-    destination = "/tmp/elasticsearch.repo"
+    source      = "./file"
+    destination = "/tmp"
   }
 
   provisioner "remote-exec" {
@@ -31,13 +31,7 @@ resource "aws_instance" "elasticsearch" {
       "sudo rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch",
       "sudo mv /tmp/elasticsearch.repo /etc/yum.repos.d/elasticsearch.repo",
       "sudo yum -y install --enablerepo=elasticsearch elasticsearch",
-
-      "echo 'cluster.name: \"soc-workshop\"' | sudo tee -a /etc/elasticsearch/elasticsearch.yml",
-      "echo 'network.host: 0.0.0.0' | sudo tee -a /etc/elasticsearch/elasticsearch.yml",
-      "echo 'node.name: \"soc-es-1\"' | sudo tee -a /etc/elasticsearch/elasticsearch.yml",
-      "echo 'node.master: true' | sudo tee -a /etc/elasticsearch/elasticsearch.yml",
-      "echo 'node.data: true' | sudo tee -a /etc/elasticsearch/elasticsearch.yml",
-
+      "sudo mv /tmp/elasticsearch.yml /etc/elasticsearch/elasticsearch.yml",
       "sudo service elasticsearch start"
     ]
   }
