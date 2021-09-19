@@ -29,9 +29,9 @@ resource "aws_instance" "elasticsearch" {
   provisioner "remote-exec" {
     inline = [
       "sudo rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch",
-      "sudo mv /tmp/elasticsearch.repo /etc/yum.repos.d/elasticsearch.repo",
+      "sudo mv /tmp/file/elasticsearch.repo /etc/yum.repos.d/elasticsearch.repo",
       "sudo yum -y install --enablerepo=elasticsearch elasticsearch",
-      "sudo mv /tmp/elasticsearch.yml /etc/elasticsearch/elasticsearch.yml",
+      "sudo mv /tmp/file/elasticsearch.yml /etc/elasticsearch/elasticsearch.yml",
       "sudo service elasticsearch start"
     ]
   }
