@@ -9,6 +9,6 @@ resource "aws_key_pair" "cloud9key" {
   public_key = tls_private_key.pk.public_key_openssh
 
   provisioner "local-exec" {
-    command = "echo '${tls_private_key.pk.private_key_pem}' > ${pathexpand("~/.ssh/id_rsa")}"
+    command = "echo '${tls_private_key.pk.private_key_pem}' > ${pathexpand("~/.ssh/id_rsa")}; chmod 400 ${pathexpand("~/.ssh/id_rsa")}"
   }
 }
