@@ -1,7 +1,7 @@
-cluster.name: soc-workshop
-
-node.name: soc-es-1
+node.name: socES1
 
 network.host: 0.0.0.0
 
-discovery.type: single-node
+discovery.seed_hosts: ["socES1",]
+
+cluster.initial_master_nodes: ["socES1"]
