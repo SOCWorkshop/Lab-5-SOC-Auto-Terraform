@@ -17,7 +17,7 @@ resource "aws_instance" "elasticsearch" {
   connection {
     type        = "ssh"
     user        = "ec2-user"
-    host        = self.ipv4_address
+    host        = self.public_ip
     private_key = tls_private_key.pk.private_key_pem
   }
 
