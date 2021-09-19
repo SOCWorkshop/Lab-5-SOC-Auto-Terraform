@@ -1,7 +1,7 @@
 resource "aws_instance" "elasticsearch" {
   # due to aws limitation, we can't use ubuntu and must use amazon ami which is based on centos   
   ami           = "ami-087c17d1fe0178315" # us-west-1
-  instance_type = "t2.micro"
+  instance_type = "m5.large"
 
   key_name = aws_key_pair.cloud9key.key_name
 
