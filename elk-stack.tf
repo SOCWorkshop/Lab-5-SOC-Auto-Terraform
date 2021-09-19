@@ -31,7 +31,13 @@ resource "aws_instance" "elasticsearch" {
       "sudo rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch",
       "sudo mv /tmp/elasticsearch.repo /etc/yum.repos.d/elasticsearch.repo",
       "sudo yum -y install --enablerepo=elasticsearch elasticsearch",
-      "sudo network.host: 0.0.0.0 >> /etc/elasticsearch/elasticsearch.yml",
+
+      "sudo echo 'cluster.name: \"soc-workshop\"' >> /etc/elasticsearch/elasticsearch.yml",
+      "sudo echo 'network.host: 0.0.0.0' >> /etc/elasticsearch/elasticsearch.yml",
+      "sudo echo 'node.name: \"soc-es-1\"' >> /etc/elasticsearch/elasticsearch.yml",
+      "sudo echo 'node.master: true' >> /etc/elasticsearch/elasticsearch.yml",
+      "sudo echo 'node.data: true' >> /etc/elasticsearch/elasticsearch.yml",
+
       "sudo service elasticsearch start"
     ]
   }
