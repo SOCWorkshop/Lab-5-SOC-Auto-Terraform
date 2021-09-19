@@ -12,7 +12,7 @@ resource "aws_instance" "elasticsearch" {
     volume_size = 30
   }
 
-  vpc_security_group_ids = [ aws_security_group.allow_access_to_system.id ]
+  vpc_security_group_ids = [aws_security_group.allow_access_to_system.id]
 
   provisioner "file" {
     source      = "file/elasticsearch.repo"
