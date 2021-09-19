@@ -11,4 +11,9 @@ resource "aws_key_pair" "cloud9key" {
   provisioner "local-exec" {
     command = "echo '${tls_private_key.pk.private_key_pem}' > ${pathexpand("~/.ssh/id_rsa")}; chmod 400 ${pathexpand("~/.ssh/id_rsa")}"
   }
+
+  provisioner "local-exec" {
+    when    = destroy
+    command = "rm -f ${pathexpand("~/.ssh/id_rsa")}"
+  }
 }
