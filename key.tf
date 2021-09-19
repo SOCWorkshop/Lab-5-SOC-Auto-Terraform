@@ -5,7 +5,7 @@ resource "tls_private_key" "pk" {
 }
 
 resource "aws_key_pair" "cloud9key" {
-  key_name   = "cloud9key"      
+  key_name   = "cloud9key"
   public_key = tls_private_key.pk.public_key_openssh
 
   provisioner "local-exec" {
