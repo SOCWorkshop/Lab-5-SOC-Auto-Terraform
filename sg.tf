@@ -2,6 +2,8 @@ resource "aws_security_group" "allow_access_to_system" {
   name        = "allow_access_to_system"
   description = "Allow Participant to Access the System"
 
+  vpc = aws_default_vpc.default.id
+
   ingress = [
     {
       description      = "Allowed Elasticsearch 2"
@@ -9,7 +11,6 @@ resource "aws_security_group" "allow_access_to_system" {
       to_port          = 9300
       protocol         = "tcp"
       cidr_blocks      = ["0.0.0.0/0"]
-      ipv6_cidr_blocks = ["::/0"]
     },
     {
       description      = "Allowed Elasticsearch 1"
@@ -17,7 +18,6 @@ resource "aws_security_group" "allow_access_to_system" {
       to_port          = 9200
       protocol         = "tcp"
       cidr_blocks      = ["0.0.0.0/0"]
-      ipv6_cidr_blocks = ["::/0"]
     },
     {
       description      = "Allowed Kibana"
@@ -25,7 +25,6 @@ resource "aws_security_group" "allow_access_to_system" {
       to_port          = 5601
       protocol         = "tcp"
       cidr_blocks      = ["0.0.0.0/0"]
-      ipv6_cidr_blocks = ["::/0"]
     },
     {
       description      = "Allowed SSH"
@@ -33,7 +32,6 @@ resource "aws_security_group" "allow_access_to_system" {
       to_port          = 22
       protocol         = "tcp"
       cidr_blocks      = ["0.0.0.0/0"]
-      ipv6_cidr_blocks = ["::/0"]
     },
     {
       description      = "Allow Local Access"
@@ -50,7 +48,6 @@ resource "aws_security_group" "allow_access_to_system" {
       to_port          = 0
       protocol         = "-1"
       cidr_blocks      = ["0.0.0.0/0"]
-      ipv6_cidr_blocks = ["::/0"]
     }
   ]
 
