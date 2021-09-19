@@ -14,8 +14,15 @@ resource "aws_instance" "elasticsearch" {
 
   vpc_security_group_ids = [aws_security_group.allow_access_to_system.id]
 
+  connection {
+    type        = "ssh"
+    user        = "ec2-user"
+    host        = self.ipv4_address
+    private_key = tls_private_key.pk.private_key_pem
+  }
+
   provisioner "file" {
-    source      = "file/elasticsearch.repo"
+    source      = "./file/elasticsearch.repo"
     destination = "/tmp/elasticsearch.repo"
   }
 
