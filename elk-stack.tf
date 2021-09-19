@@ -31,6 +31,8 @@ resource "aws_instance" "elasticsearch" {
       "sudo rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch",
       "sudo mv /tmp/elasticsearch.repo /etc/yum.repos.d/elasticsearch.repo",
       "sudo yum -y install --enablerepo=elasticsearch elasticsearch",
+      "sudo network.host: 0.0.0.0 >> /etc/elasticsearch/elasticsearch.yml"
+      "sudo service elasticsearch start"
     ]
   }
 
