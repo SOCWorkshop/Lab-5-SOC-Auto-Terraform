@@ -2,7 +2,7 @@ resource "aws_security_group" "allow_access_to_system" {
   name        = "allow_access_to_system"
   description = "Allow Participant to Access the System"
 
-  vpc = aws_default_vpc.default.id
+  vpc_id = aws_default_vpc.default.id
 
   ingress = [
     {
