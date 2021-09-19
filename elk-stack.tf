@@ -30,7 +30,7 @@ resource "aws_instance" "elasticsearch" {
     inline = [
       "sudo rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch",
       "sudo mv /tmp/elasticsearch.repo /etc/yum.repos.d/elasticsearch.repo",
-      "sudo yum install --enablerepo=elasticsearch elasticsearch",
+      "sudo yum -y install --enablerepo=elasticsearch elasticsearch",
     ]
   }
 
