@@ -1,6 +1,6 @@
 node.name: socES1
 
-network.host: [_global_]
+network.host: 0.0.0.0
 
 discovery.seed_hosts: ["127.0.0.1",]
 
