@@ -44,7 +44,7 @@ resource "aws_instance" "kibana" {
     inline = [
       "sudo rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch",
       "sudo mv /tmp/file/kibana.repo /etc/yum.repos.d/kibana.repo",
-      "sudo yum -y install --enablerepo=kibana kibana",
+      "sudo yum -y install kibana",
       "sudo mv /tmp/kibana.yml /etc/kibana/kibana.yml",
       "sudo service kibana start",
       "sudo service kibana enable"
