@@ -46,7 +46,8 @@ resource "aws_instance" "kibana" {
       "sudo mv /tmp/file/kibana.repo /etc/yum.repos.d/kibana.repo",
       "sudo yum -y install --enablerepo=kibana kibana",
       "sudo mv /tmp/kibana.yml /etc/kibana/kibana.yml",
-      "sudo service kibana start"
+      "sudo service kibana start",
+      "sudo service kibana enable"
     ]
   }
 

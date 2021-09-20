@@ -32,7 +32,8 @@ resource "aws_instance" "elasticsearch" {
       "sudo mv /tmp/file/elasticsearch.repo /etc/yum.repos.d/elasticsearch.repo",
       "sudo yum -y install --enablerepo=elasticsearch elasticsearch",
       "sudo mv /tmp/file/elasticsearch.yml /etc/elasticsearch/elasticsearch.yml",
-      "sudo service elasticsearch start"
+      "sudo service elasticsearch start",
+      "sudo service elasticsearch enable"
     ]
   }
 
