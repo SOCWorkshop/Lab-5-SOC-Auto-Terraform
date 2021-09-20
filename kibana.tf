@@ -36,7 +36,7 @@ resource "aws_instance" "kibana" {
   }
 
   provisioner "file" {
-    content = data.template_file.kibana
+    content = data.template_file.kibana.rendered
     destination = "/tmp/kibana.yml"
   }
 
