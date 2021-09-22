@@ -47,7 +47,9 @@ resource "aws_instance" "kibana" {
       "sudo yum -y install kibana",
       "sudo mv /tmp/kibana.yml /etc/kibana/kibana.yml",
       "sudo service kibana start",
-      "sudo systemctl enable kibana"
+      "sudo systemctl enable kibana",
+      "sudo yum -y install nginx",
+      "sudo systemctl enable nginx"
     ]
   }
 
