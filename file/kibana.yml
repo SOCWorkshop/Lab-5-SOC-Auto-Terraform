@@ -3,4 +3,6 @@ server.host: 0.0.0.0
 
 server.maxPayloadBytes: 104857600
 
+server.publicBaseUrl: "http://localhost:5601"
+
 elasticsearch.hosts: [ "http://${elasticsearch}:9200" ]
