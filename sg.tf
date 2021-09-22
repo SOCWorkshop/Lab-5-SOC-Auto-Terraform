@@ -5,17 +5,9 @@ resource "aws_security_group" "allow_access_to_system" {
   vpc_id = aws_default_vpc.default.id
 
   ingress {
-    description = "Allowed Elasticsearch 2"
-    from_port   = 9300
-    to_port     = 9300
-    protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
-
-  ingress {
-    description = "Allowed Elasticsearch 1"
-    from_port   = 9200
-    to_port     = 9200
+    description = "Allowed Http"
+    from_port   = 80
+    to_port     = 80
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
