@@ -34,6 +34,6 @@ resource "aws_instance" "server" {
   }
 
   tags = {
-    Name = "Server-Wordpress-Filebeat"
+    Name = "Application-Server"
   }
 }

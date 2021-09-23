@@ -8,7 +8,7 @@ resource "aws_instance" "attack" {
   associate_public_ip_address = true
 
   root_block_device {
-    volume_size = 30
+    volume_size = 10
   }
 
   vpc_security_group_ids = [aws_security_group.allow_access_to_system.id]
