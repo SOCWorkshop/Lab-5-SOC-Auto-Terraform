@@ -23,7 +23,7 @@ resource "aws_instance" "server" {
   # the user is SOC , password is SocWorkshop1  
   provisioner "remote-exec" {
     inline = [
-    "sudo amazon-linux-extras install docker",
+    "sudo amazon-linux-extras install -y docker",
     "sudo service docker start",
     "sudo usermod -a -G docker ec2-user",
     "sudo chkconfig docker on",
