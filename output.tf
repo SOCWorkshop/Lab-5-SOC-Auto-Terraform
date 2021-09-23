@@ -9,3 +9,7 @@ output "kibana-ip" {
 output "application-ip" {
   value = aws_instance.server.public_ip
 }
+
+output "attacker-ip" {
+  value = aws_instance.attack.public_ip
+}

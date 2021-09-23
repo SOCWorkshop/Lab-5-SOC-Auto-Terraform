@@ -1,4 +1,4 @@
-resource "aws_instance" "server" {
+resource "aws_instance" "attack" {
   # due to aws limitation, we can't use ubuntu and must use amazon ami which is based on centos   
   ami           = "ami-087c17d1fe0178315" # us-west-1
   instance_type = "t2.micro"
