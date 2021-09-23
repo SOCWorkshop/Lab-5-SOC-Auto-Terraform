@@ -6,6 +6,14 @@ data "template_file" "kibana" {
  }
 }
 
+data "template_file" "kibana_nginx" {
+ #template = file("~/environment/workspace/aws-infra/rll-prod/modules/single-service-cluster/user_data.yaml")
+  template = file("./file/nginx.conf")
+  vars = {
+    port = "5601"
+ }
+}
+
 
 # hhttps://www.elastic.co/guide/en/kibana/current/rpm.html
 resource "aws_instance" "kibana" {
@@ -40,6 +48,11 @@ resource "aws_instance" "kibana" {
     destination = "/tmp/kibana.yml"
   }
 
+  provisioner "file" {
+    content = data.template_file.kibana_nginx.rendered
+    destination = "/tmp/kibana.conf"
+  }
+  # the user is SOC , password is SocWorkshop1  
   provisioner "remote-exec" {
     inline = [
       "sudo rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch",
@@ -48,8 +61,12 @@ resource "aws_instance" "kibana" {
       "sudo mv /tmp/kibana.yml /etc/kibana/kibana.yml",
       "sudo service kibana start",
       "sudo systemctl enable kibana",
-      "sudo yum -y install nginx",
-      "sudo systemctl enable nginx"
+      "sudo amazon-linux-extras install -y nginx1",
+      "sudo systemctl enable nginx",
+      "sudo mv /tmp/kibana.conf /etc/nginx/conf.d/kibana.conf",
+      "sudo mv /tmp/file/htpassword.users /etc/nginx/htpasswd.users",
+      "sudo service nginx restart",
+      "sudo rm -rf /tmp/file"
     ]
   }
 
