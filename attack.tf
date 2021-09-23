@@ -29,7 +29,9 @@ resource "aws_instance" "attack" {
     "sudo chkconfig docker on",
     "sudo yum install -y git",
     "sudo curl -L \"https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)\" -o /usr/local/bin/docker-compose",
-    "sudo chmod +x /usr/local/bin/docker-compose"
+    "sudo chmod +x /usr/local/bin/docker-compose",
+    "git clone https://github.com/SOCWorkshop/Lab-5-Attacker-Jupyter-Notebook.git",
+    "cd Lab-5-Attacker-Jupyter-Notebook; docker-compose up -d"
     ]
   }
 
