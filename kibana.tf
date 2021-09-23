@@ -64,7 +64,7 @@ resource "aws_instance" "kibana" {
       "sudo amazon-linux-extras install -y nginx1",
       "sudo systemctl enable nginx",
       "sudo mv /tmp/kibana.conf /etc/nginx/conf.d/kibana.conf",
-      "sudo mv /tmp/file/htpassword.users /etc/nginx/htpasswd.users",
+      "sudo mv /tmp/file/htpasswd.users /etc/nginx/htpasswd.users",
       "sudo service nginx restart",
       "sudo rm -rf /tmp/file"
     ]
