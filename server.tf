@@ -33,6 +33,15 @@ resource "aws_instance" "server" {
     ]
   }
 
+  provisioner "remote-exec" {
+    inline = [
+      "git clone https://github.com/SOCWorkshop/Lab-5-Application.git",
+      "cd /home/ec2-user/Lab-5-Application; docker-compose pull",
+      "cd /home/ec2-user/Lab-5-Application; docker-compose up -d"
+    ]
+
+  }
+
   tags = {
     Name = "Application-Server"
   }
