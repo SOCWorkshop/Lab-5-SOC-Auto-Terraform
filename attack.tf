@@ -23,17 +23,23 @@ resource "aws_instance" "attack" {
   # the user is SOC , password is SocWorkshop1  
   provisioner "remote-exec" {
     inline = [
-    "sudo amazon-linux-extras install -y docker",
-    "sudo service docker start",
-    "sudo usermod -a -G docker ec2-user",
-    "sudo chkconfig docker on",
-    "sudo yum install -y git",
-    "sudo curl -L \"https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)\" -o /usr/local/bin/docker-compose",
-    "sudo chmod +x /usr/local/bin/docker-compose",
-    "git clone https://github.com/SOCWorkshop/Lab-5-Attacker-Jupyter-Notebook.git",
-    "cd /home/ec2-user/Lab-5-Attacker-Jupyter-Notebook; docker-compose pull",
-    "cd /home/ec2-user/Lab-5-Attacker-Jupyter-Notebook; docker-compose up -d"
+      "sudo amazon-linux-extras install -y docker",
+      "sudo service docker start",
+      "sudo usermod -a -G docker ec2-user",
+      "sudo chkconfig docker on",
+      "sudo yum install -y git",
+      "sudo curl -L \"https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)\" -o /usr/local/bin/docker-compose",
+      "sudo chmod +x /usr/local/bin/docker-compose"
     ]
+  }
+
+  provisioner "remote-exec" {
+    inline = [
+      "git clone https://github.com/SOCWorkshop/Lab-5-Attacker-Jupyter-Notebook.git",
+      "cd /home/ec2-user/Lab-5-Attacker-Jupyter-Notebook; docker-compose pull",
+      "cd /home/ec2-user/Lab-5-Attacker-Jupyter-Notebook; docker-compose up -d"
+    ]
+
   }
 
   tags = {

@@ -1,17 +1,17 @@
 data "template_file" "kibana" {
- #template = file("~/environment/workspace/aws-infra/rll-prod/modules/single-service-cluster/user_data.yaml")
+  #template = file("~/environment/workspace/aws-infra/rll-prod/modules/single-service-cluster/user_data.yaml")
   template = file("./file/kibana.yml")
   vars = {
     elasticsearch = aws_instance.elasticsearch.private_ip
- }
+  }
 }
 
 data "template_file" "kibana_nginx" {
- #template = file("~/environment/workspace/aws-infra/rll-prod/modules/single-service-cluster/user_data.yaml")
+  #template = file("~/environment/workspace/aws-infra/rll-prod/modules/single-service-cluster/user_data.yaml")
   template = file("./file/nginx.conf")
   vars = {
     port = "5601"
- }
+  }
 }
 
 
@@ -44,12 +44,12 @@ resource "aws_instance" "kibana" {
   }
 
   provisioner "file" {
-    content = data.template_file.kibana.rendered
+    content     = data.template_file.kibana.rendered
     destination = "/tmp/kibana.yml"
   }
 
   provisioner "file" {
-    content = data.template_file.kibana_nginx.rendered
+    content     = data.template_file.kibana_nginx.rendered
     destination = "/tmp/kibana.conf"
   }
   # the user is SOC , password is SocWorkshop1  
