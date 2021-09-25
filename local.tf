@@ -1,6 +1,6 @@
 resource "null_resource" "set_env" {
   provisioner "local-exec" {
-    command = "cp ./file/config.cfg ~/.ssh/config"
+    command = "cp ./file/config.cfg ~/.ssh/config; chmod 600 ~/.ssh/config"
   }
   provisioner "local-exec" {
     when    = destroy
