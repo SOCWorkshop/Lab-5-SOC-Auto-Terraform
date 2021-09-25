@@ -8,3 +8,5 @@ cluster.initial_master_nodes: ["socES1"]
 
 path.logs: /var/log/elasticsearch
 path.data: /var/log/elasticsearch/data
+
+xpack.security.enabled: false

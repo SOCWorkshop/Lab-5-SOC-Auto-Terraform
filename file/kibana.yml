@@ -6,3 +6,5 @@ server.maxPayloadBytes: 104857600
 server.publicBaseUrl: "http://localhost:5601"
 
 elasticsearch.hosts: [ "http://${elasticsearch}:9200" ]
+
+security.showInsecureClusterWarning: false
