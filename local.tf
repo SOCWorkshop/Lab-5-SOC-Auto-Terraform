@@ -4,7 +4,7 @@ resource "null_resource" "set_env" {
   }
   provisioner "local-exec" {
     when    = destroy
-    command = "rm -rf ~/.ssh/config"
+    command = "rm -rf ~/.ssh/config;  rm -rf ~/.ssh/known_hosts"
   }
 }
 
