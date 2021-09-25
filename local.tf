@@ -14,12 +14,19 @@ resource "null_resource" "set_etc_host" {
   }
 
   provisioner "local-exec" {
-    command = <<EOT
-      "echo ${aws_instance.elasticsearch.private_ip} elasticsearch | sudo tee -a /etc/hosts"
-      "echo ${aws_instance.kibana.private_ip} kibana | sudo tee -a /etc/hosts"
-      "echo ${aws_instance.server.private_ip} application | sudo tee -a /etc/hosts"
-      "echo ${aws_instance.attack.private_ip} attacker | sudo tee -a /etc/hosts"
-    EOT
+    command = "echo ${aws_instance.elasticsearch.private_ip} elasticsearch | sudo tee -a /etc/hosts"
+  }
+
+  provisioner "local-exec" {
+    command = "echo ${aws_instance.kibana.private_ip} kibana | sudo tee -a /etc/hosts"
+  }
+
+  provisioner "local-exec" {
+    command =  "echo ${aws_instance.server.private_ip} application | sudo tee -a /etc/hosts"  
+  }
+
+  provisioner "local-exec" {
+    command = "echo ${aws_instance.attack.private_ip} attacker | sudo tee -a /etc/hosts"
   }
 
   provisioner "local-exec" {
