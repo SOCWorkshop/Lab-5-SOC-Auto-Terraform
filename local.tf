@@ -1,6 +1,6 @@
 resource "null_resource" "set_env" {
   provisioner "local-exec" {
-    command = "mv ./file/config.cfg ~/.ssh/config"
+    command = "cp ./file/config.cfg ~/.ssh/config"
   }
   provisioner "local-exec" {
     when    = destroy
