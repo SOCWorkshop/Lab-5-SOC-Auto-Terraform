@@ -15,10 +15,10 @@ resource "null_resource" "set_etc_host" {
 
   provisioner "local-exec" {
     command = <<EOT
-      "sudo -- sh -c \"echo ${aws_instance.elasticsearch.public_ip} elasticsearch >> /etc/hosts\""
-      "sudo -- sh -c \"echo ${aws_instance.kibana.public_ip} kibana >> /etc/hosts\""
-      "sudo -- sh -c \"echo ${aws_instance.server.public_ip} application >> /etc/hosts\""
-      "sudo -- sh -c \"echo ${aws_instance.attack.public_ip} attacker >> /etc/hosts\""
+      "sudo -- sh -c \"echo ${aws_instance.elasticsearch.private_ip} elasticsearch >> /etc/hosts\""
+      "sudo -- sh -c \"echo ${aws_instance.kibana.private_ip} kibana >> /etc/hosts\""
+      "sudo -- sh -c \"echo ${aws_instance.server.private_ip} application >> /etc/hosts\""
+      "sudo -- sh -c \"echo ${aws_instance.attack.private_ip} attacker >> /etc/hosts\""
     EOT
   }
 
