@@ -13,3 +13,10 @@ Step by Step to use this repository
 Note (to destroy the lab):
 1. Execute `terraform destroy`
 2. Answer `yes` as a reply to `terraform destroy`
+
+## Mantainers
+<p>
+  <a href="https://github.com/ezeutno">
+    <img width="50" src="https://avatars0.githubusercontent.com/u/32078894?s=460&v=4" alt="Ivan Ezechial Suratno">
+  </a>
+</p>
