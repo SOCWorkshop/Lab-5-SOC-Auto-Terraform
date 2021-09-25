@@ -37,7 +37,7 @@ resource "aws_instance" "server" {
     inline = [
       "git clone https://github.com/SOCWorkshop/Lab5-Application.git",
       "cd /home/ec2-user/Lab5-Application; echo ELASTICSEARCH=${aws_instance.elasticsearch.private_ip} > .env",
-      "cd /home/ec2-user/Lab5-Application; echo KIBANA=${aws_instance.kibana.private_ip} > .env",
+      "cd /home/ec2-user/Lab5-Application; echo KIBANA=${aws_instance.kibana.private_ip} >> .env",
       "cd /home/ec2-user/Lab5-Application; docker-compose pull",
       "cd /home/ec2-user/Lab5-Application; docker-compose up -d"
     ]
