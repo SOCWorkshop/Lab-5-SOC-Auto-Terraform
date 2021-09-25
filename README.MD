@@ -14,6 +14,9 @@ Note (to destroy the lab):
 1. Execute `terraform destroy`
 2. Answer `yes` as a reply to `terraform destroy`
 
+## Network Design
+![plot](./SOCWorkshop.drawio.png)
+
 ## Mantainers
 <p>
   <a href="https://github.com/ezeutno">
